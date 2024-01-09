@@ -1,3 +1,5 @@
+
+--creating tables
 CREATE TABLE public."Departments" (
     dept_no character varying(255) NOT NULL,
     dept_name character varying(255) NOT NULL,
@@ -41,7 +43,7 @@ CREATE TABLE public."Titles" (
     title character varying(255) NOT NULL,
 	CONSTRAINT "pk_Titles" PRIMARY KEY (title_id)
 );
-
+--adding foreign keys
 ALTER TABLE "Salaries" ADD CONSTRAINT "fk_salaries_emp_no" FOREIGN KEY("emp_no")
 REFERENCES "Employees" ("emp_no");
 
@@ -59,7 +61,7 @@ REFERENCES "Employees" ("emp_no");
 
 ALTER TABLE "Dept_emp" ADD CONSTRAINT "fk_dept_emp_dept_no" FOREIGN KEY("dept_no")
 REFERENCES "Departments" ("dept_no");
-
+--loading the files
 COPY "Employees" FROM 'C:\Program Files\PostgreSQL\14\employees.csv' DELIMITER ',' CSV HEADER;
 COPY "Dept_manager" FROM 'C:\Program Files\PostgreSQL\14\dept_manager.csv' DELIMITER ',' CSV HEADER;
 COPY "Dept_emp" FROM 'C:\Program Files\PostgreSQL\14\dept_emp.csv' DELIMITER ',' CSV HEADER;
